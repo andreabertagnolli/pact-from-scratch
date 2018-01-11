@@ -1,6 +1,6 @@
 .idea
 target/
-**/*.iml
+*.iml
 pact-from-scratch.iml
 cook/cook.iml
 ingredients/ingredients.iml
