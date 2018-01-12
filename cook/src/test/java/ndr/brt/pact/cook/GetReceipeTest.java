@@ -17,7 +17,7 @@ public class GetReceipeTest {
 
     @Rule public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("receipes", "localhost", 8081, this);
 
-    @Pact(consumer="black_cats")
+    @Pact(consumer="cook")
     public RequestResponsePact createFragment(PactDslWithProvider builder) {
         return builder.given("get receipe")
                 .uponReceiving("Get a receipe by name")
