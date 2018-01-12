@@ -27,8 +27,7 @@ public class GetReceipeTest {
                 .status(200)
                 .body(new Gson().toJson(new Receipe()
                         .name("parmigiana")
-                        .difficulty("easy")
-                        .ingredient(new Ingredient())))
+                        .difficulty("easy")))
                 .toPact();
     }
 
