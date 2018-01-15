@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import spark.Spark;
 
 import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -35,6 +36,9 @@ public class ReceipesRouteTest {
 
     @State("get receipe")
     public void get_receipe() {
-        when(receipes.get("parmigiana")).thenReturn(new Receipe("parmigiana", "easy", emptyList()));
+        when(receipes.get("parmigiana"))
+                .thenReturn(new Receipe("parmigiana", "easy", singletonList(
+                        new Ingredient("eggplant", 1.0, "pcs")
+                )));
     }
 }

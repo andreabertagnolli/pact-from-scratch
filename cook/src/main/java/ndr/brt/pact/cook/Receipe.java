@@ -26,4 +26,8 @@ public class Receipe {
     public String name() {
         return name;
     }
+
+    public List<Ingredient> ingredients() {
+        return this.ingredients;
+    }
 }
