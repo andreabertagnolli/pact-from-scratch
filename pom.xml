@@ -75,6 +75,7 @@
                         <configuration>
                             <brokerUrl>http://localhost:1312</brokerUrl>
                             <pacts>${project.build.directory}/pacts</pacts>
+                            <consumerVersion>2.0.0</consumerVersion>
                         </configuration>
                     </execution>
                 </executions>
