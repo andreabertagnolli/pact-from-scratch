@@ -45,7 +45,49 @@
             <version>2.13.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>au.com.dius</groupId>
+            <artifactId>pact-jvm-consumer-java8_2.12</artifactId>
+            <version>3.5.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.warmuuh</groupId>
+                <artifactId>pactbroker-maven-plugin</artifactId>
+                <version>0.0.10</version>
+                <executions>
+                    <execution>
+                        <id>upload-pacts</id>
+                        <phase>test</phase>
+                        <goals><goal>upload-pacts</goal></goals>
+                        <configuration>
+                            <brokerUrl>http://localhost:1312</brokerUrl>
+                            <pacts>${project.build.directory}/pacts</pacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 
 </project>

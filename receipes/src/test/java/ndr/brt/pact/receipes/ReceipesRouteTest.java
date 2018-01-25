@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import spark.Spark;
 
-import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -19,7 +18,6 @@ import static org.mockito.Mockito.when;
 @RunWith(PactRunner.class)
 @Provider("receipes")
 @PactBroker(host = "localhost", port = "1312")
-
 public class ReceipesRouteTest {
 
     private static final int PORT = 65432;
@@ -38,7 +36,7 @@ public class ReceipesRouteTest {
     public void get_receipe() {
         when(receipes.get("parmigiana"))
                 .thenReturn(new Receipe("parmigiana", "easy", singletonList(
-                        new Ingredient("eggplant", 1.0, "pcs")
+                        new Ingredient("eggplant").quantity(1.0, "pcs")
                 )));
     }
 }
