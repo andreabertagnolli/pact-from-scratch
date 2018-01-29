@@ -9,6 +9,7 @@ import java.awt.*;
 
 import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class App implements SparkApplication {
 
@@ -25,6 +26,17 @@ public class App implements SparkApplication {
             res.type(APPLICATION_JSON.getMimeType());
             return receipes.get(req.params("name"));
         }, gson::toJson);
+
+        post("/receipes/", (req, res) -> {
+            System.out.println(req.body());
+            Receipe receipe = gson.fromJson(req.body(), Receipe.class);
+
+            receipes.insert(receipe);
+
+            res.status(201);
+
+            return "";
+        });
     }
 
 }

@@ -14,7 +14,7 @@ public interface GetReceipe extends Function<String, Receipe> {
         return name -> {
 
             try {
-                final String body = Unirest.get("http://localhost:8081/receipes/parmigiana")
+                final String body = Unirest.get("http://localhost:8081/receipes/" + name)
                         .asString()
                         .getBody();
 

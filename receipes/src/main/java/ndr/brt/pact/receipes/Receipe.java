@@ -7,6 +7,7 @@ public class Receipe {
     private final String name;
     private final String difficulty;
     private final List<Object> ingredients;
+    private String author;
 
     public Receipe(String name, String difficulty, List<Object> ingredients) {
         this.name = name;
