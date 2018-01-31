@@ -1,11 +1,7 @@
-package ndr.brt.pact.receipes;
+package ndr.brt.pact.recipes;
 
 import com.google.gson.Gson;
-import org.apache.http.entity.ContentType;
-import spark.Spark;
 import spark.servlet.SparkApplication;
-
-import java.awt.*;
 
 import static org.apache.http.entity.ContentType.APPLICATION_JSON;
 import static spark.Spark.get;
@@ -13,25 +9,25 @@ import static spark.Spark.post;
 
 public class App implements SparkApplication {
 
-    private Receipes receipes;
+    private Recipes recipes;
 
-    public App(Receipes receipes) {
-        this.receipes = receipes;
+    public App(Recipes recipes) {
+        this.recipes = recipes;
     }
 
     public void init() {
         Gson gson = new Gson();
 
-        get("/receipes/:name", (req, res) -> {
+        get("/recipes/:name", (req, res) -> {
             res.type(APPLICATION_JSON.getMimeType());
-            return receipes.get(req.params("name"));
+            return recipes.get(req.params("name"));
         }, gson::toJson);
 
-        post("/receipes/", (req, res) -> {
+        post("/recipes/", (req, res) -> {
             System.out.println(req.body());
-            Receipe receipe = gson.fromJson(req.body(), Receipe.class);
+            Recipe recipe = gson.fromJson(req.body(), Recipe.class);
 
-            receipes.insert(receipe);
+            recipes.insert(recipe);
 
             res.status(201);
 

@@ -4,5 +4,5 @@ target/
 pact-from-scratch.iml
 cook/cook.iml
 ingredients/ingredients.iml
-receipes/receipes.iml
+recipes/recipes.iml
 suppliers/suppliers.iml

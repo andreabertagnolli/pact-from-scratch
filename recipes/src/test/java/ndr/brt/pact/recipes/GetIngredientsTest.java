@@ -1,4 +1,4 @@
-package ndr.brt.pact.receipes;
+package ndr.brt.pact.recipes;
 
 import au.com.dius.pact.consumer.Pact;
 import au.com.dius.pact.consumer.PactProviderRuleMk2;
@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static ndr.brt.pact.receipes.IngredientNamed.ingredientNamed;
+import static ndr.brt.pact.recipes.IngredientNamed.ingredientNamed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
@@ -21,7 +21,7 @@ public class GetIngredientsTest {
 
     @Rule public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("ingredients", "localhost", 8081, this);
 
-    @Pact(consumer="receipes")
+    @Pact(consumer="recipes")
     public RequestResponsePact createFragment(PactDslWithProvider builder) {
         return builder.given("get ingredients")
                 .uponReceiving("Get all available ingredients")

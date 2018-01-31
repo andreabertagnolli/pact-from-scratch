@@ -1,4 +1,4 @@
-package ndr.brt.pact.receipes;
+package ndr.brt.pact.recipes;
 
 import au.com.dius.pact.provider.junit.PactRunner;
 import au.com.dius.pact.provider.junit.Provider;
@@ -7,7 +7,6 @@ import au.com.dius.pact.provider.junit.loader.PactBroker;
 import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import spark.Spark;
@@ -19,12 +18,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(PactRunner.class)
-@Provider("receipes")
+@Provider("recipes")
 @PactBroker(host = "localhost", port = "1312")
-public class ReceipesRouteTest {
+public class RecipesRouteTest {
 
     private static final int PORT = 65432;
-    private Receipes receipes = mock(Receipes.class);
+    private Recipes recipes = mock(Recipes.class);
 
     @BeforeClass
     public static void setup() {
@@ -33,20 +32,20 @@ public class ReceipesRouteTest {
 
     @TestTarget public final Target target = new HttpTarget(PORT);
 
-    @State("get receipe")
-    public void get_receipe() {
-        when(receipes.get("parmigiana"))
-                .thenReturn(new Receipe("parmigiana", "easy", singletonList(
+    @State("get recipe")
+    public void get_recipe() {
+        when(recipes.get("parmigiana"))
+                .thenReturn(new Recipe("parmigiana", "easy", singletonList(
                         new Ingredient("eggplant").quantity(1.0, "pcs")
                 )));
 
-        final App app = new App(receipes);
+        final App app = new App(recipes);
         app.init();
     }
 
-    @State("post receipe")
-    public void post_receipe() {
-        final App app = new App(receipes);
+    @State("post recipe")
+    public void post_recipe() {
+        final App app = new App(recipes);
         app.init();
     }
 }

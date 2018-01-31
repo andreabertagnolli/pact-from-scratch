@@ -6,19 +6,19 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.util.function.Function;
 
-public interface GetReceipe extends Function<String, Receipe> {
+public interface GetRecipe extends Function<String, Recipe> {
 
     Gson GSON = new Gson();
 
-    static GetReceipe getReceipe() {
+    static GetRecipe getRecipe() {
         return name -> {
 
             try {
-                final String body = Unirest.get("http://localhost:8081/receipes/" + name)
+                final String body = Unirest.get("http://localhost:8081/recipes/" + name)
                         .asString()
                         .getBody();
 
-                return GSON.fromJson(body, Receipe.class);
+                return GSON.fromJson(body, Recipe.class);
 
             } catch (UnirestException e) {
                 throw new RuntimeException(e);

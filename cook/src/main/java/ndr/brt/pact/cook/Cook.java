@@ -4,15 +4,15 @@ import java.util.function.Function;
 
 public class Cook implements Function<String, Dish> {
 
-    private final GetReceipe getReceipe;
+    private final GetRecipe getRecipe;
 
-    public Cook(GetReceipe getReceipe) {
-        this.getReceipe = getReceipe;
+    public Cook(GetRecipe getRecipe) {
+        this.getRecipe = getRecipe;
     }
 
     @Override
     public Dish apply(String s) {
-        getReceipe.apply(s);
+        getRecipe.apply(s);
         return new Dish(s);
 
     }

@@ -9,23 +9,23 @@ import com.google.gson.Gson;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static ndr.brt.pact.cook.PostReceipe.postRecipe;
+import static ndr.brt.pact.cook.PostRecipe.postRecipe;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 
-public class PostReceipeTest {
+public class PostRecipeTest {
 
     @Rule
-    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("receipes", "localhost", 8082, this);
+    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("recipes", "localhost", 8082, this);
 
     @Pact(consumer="cook")
     public RequestResponsePact createFragment(PactDslWithProvider builder) {
-        return builder.given("post receipe")
+        return builder.given("post recipe")
                 .uponReceiving("Create new recipe")
-                .path("/receipes/")
+                .path("/recipes/")
                 .method("POST")
-                .body(new Gson().toJson(new Receipe()
+                .body(new Gson().toJson(new Recipe()
                         .name("lasagne")
                         .difficulty("medium")
                         .ingredient(new Ingredient().name("ragu").quantity(1).unit("kg"))))
@@ -36,8 +36,8 @@ public class PostReceipeTest {
 
     @Test
     @PactVerification
-    public void post_receipe() {
-        Boolean done = postRecipe().apply(new Receipe()
+    public void post_recipe() {
+        Boolean done = postRecipe().apply(new Recipe()
                 .name("lasagne")
                 .difficulty("medium")
                 .ingredient(new Ingredient().name("ragu").quantity(1).unit("kg")));

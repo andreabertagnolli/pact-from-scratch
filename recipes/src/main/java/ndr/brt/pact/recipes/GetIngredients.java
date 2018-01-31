@@ -1,4 +1,4 @@
-package ndr.brt.pact.receipes;
+package ndr.brt.pact.recipes;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -6,9 +6,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 

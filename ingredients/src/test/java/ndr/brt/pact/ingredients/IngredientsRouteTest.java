@@ -35,7 +35,7 @@ public class IngredientsRouteTest {
     @TestTarget public final Target target = new HttpTarget(PORT);
 
     @State("get ingredients")
-    public void get_receipe() {
+    public void get_recipe() {
         when(ingredients.get())
                 .thenReturn(asList(
                         new Ingredient("wheat flour", singletonList("gluten")),

@@ -1,4 +1,4 @@
-package ndr.brt.pact.receipes;
+package ndr.brt.pact.recipes;
 
 import java.util.ArrayList;
 import java.util.List;

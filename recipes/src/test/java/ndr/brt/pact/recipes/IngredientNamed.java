@@ -1,4 +1,4 @@
-package ndr.brt.pact.receipes;
+package ndr.brt.pact.recipes;
 
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
